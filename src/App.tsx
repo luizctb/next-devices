@@ -24,16 +24,10 @@ const MapEvents = () => {
   return false;
 }
 
-
-
   // Criar código de remover um item do array, baseado no index
   //   i=0     i =1    i =2   i=3
   //arr[a,     b,      c,     d]
   
-  function removeItem(posicaoNoArray) {
-    console.log(posicaoNoArray)
-  }
-
   return (
     <div>
     <MapContainer
