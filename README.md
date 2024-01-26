@@ -1,6 +1,6 @@
 # Projeto Next Devices
 
-Projeto consruído com atributos inovadores e tecnológicos, demonstração de uma mapa atualizado sendo possível inserção de pontos de interesse (POi).
+Projeto consruído com atributos inovadores e tecnológicos, demonstração de um mapa moderno e atualizado, sendo possível inserção de pontos de interesse (POI).
 
 ![preview](./.github/preview.png)
 
