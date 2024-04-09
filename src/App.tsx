@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 
-const pontoInicial = {
-  descricao: 'Marcação do primeiro ponto',
-  posicao: [40.505, -100.09]
-}
+const baseURL = "http://localhost:3000/geo";
 
 const App = () => {
   const position = [40.505, -100.09];
   
-  const [listOfPOI, setListOfPOI] = useState([pontoInicial]);
+  const [listOfPOI, setListOfPOI] = useState([]);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setListOfPOI(response.data);
+    });
+  }, []); 
 
 const MapEvents = () => {
   useMapEvents({
@@ -28,6 +32,15 @@ const MapEvents = () => {
   //   i=0     i =1    i =2   i=3
   //arr[a,     b,      c,     d]
   
+  // para remover elemento do array //pop (remove fo fim fo array) - // shift (remove do começo do array) - // splice (remove pelo índice do elemento)
+
+const remover = (index) => {
+  
+  const novaListaPOI = [...listOfPOI];
+    novaListaPOI.splice(index, 1);
+    setListOfPOI(novaListaPOI);
+}
+
   return (
     <div>
     <MapContainer
@@ -50,12 +63,13 @@ const MapEvents = () => {
           {poi.descricao}
 
           <button onClick={() => remover(posicaoNoArray)}>-</button>
+          
         </Popup>
       </Marker>
       ))}
       
     </MapContainer>
-      </div>
+    </div>
   );
 };
 
