@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+//O Axios é utilizado para fazer uma requisição HTTP para obter os dados iniciais dos POIs a partir da URL fornecida.
 
+//Define a URL base para as requisições HTTP.
 const baseURL = "http://localhost:3000/geo";
 
+//App componente funcional raiz da aplicação
 const App = () => {
-  const position = [40.505, -100.09];
+  const position = [40.505, -100.09]; //position é uma constante que armazena um par de coordenadas.
   
   const [listOfPOI, setListOfPOI] = useState([]);
 
+  //React.useEffect é usado para fazer uma requisição HTTP para a URL 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setListOfPOI(response.data);
@@ -34,7 +38,7 @@ const MapEvents = () => {
   
   // para remover elemento do array //pop (remove fo fim fo array) - // shift (remove do começo do array) - // splice (remove pelo índice do elemento)
 
-const remover = (index) => {
+const remover = (index: number) => {
   
   const novaListaPOI = [...listOfPOI];
     novaListaPOI.splice(index, 1);
